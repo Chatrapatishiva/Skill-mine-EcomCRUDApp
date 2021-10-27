@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"  href="/styles.css">
+    <title>Ecommerce API</title>
+
+   
+</head>
+<body>
+    <div align="center"><h1>Ecommerce CRUD Application</h1>
+    </div>
+   <div>
+
+      <div class="row" style="display: flex;
+      justify-content: space-evenly;">
+         
+         <div class="col-6">
+            <form action="/create" method="POST">
+               <label for="category">Choose a category:</label>
+       
+               <select name="category" id="category">
+                 <option value="Mobile">Mobile</option>
+                 <option value="Laptop">Laptop</option>
+                 <option value="TV">TV</option>
+                 <option value="Clothing">Clothing</option>
+                 <option value="Accessories">Accessories</option>
+                 <option value="Personal Care">Personal Care</option>
+                 <option value="Home Decor">Home Decor</option>
+                 <option value="Shoes">Shoes</option>
+                 <option value="Watches">Watches</option>
+
+
+
+               </select>
+               <input type="text" placeholder="Brand Name" name="brand">
+               <button type="submit">Add Product</button>
+             </form>
+         </div>
+         <div class="col-6">
+            <form action="/search" method="POST">
+               <label for="category">Filter by category:</label>
+       
+               <select name="category" id="category">
+                  <option value="All">All</option>
+                 <option value="Mobile">Mobile</option>
+                 <option value="Laptop">Laptop</option>
+                 <option value="TV">TV</option>
+                 <option value="Clothing">Clothing</option>
+                 <option value="Accessories">Accessories</option>
+                 <option value="Personal Care">Personal Care</option>
+                 <option value="Home Decor">Home Decor</option>
+                 <option value="Shoes">Shoes</option>
+                 <option value="Watches">Watches</option>
+               </select>
+               <input type="text" placeholder="Search" name="brand" id="txtAutoComplete" list="languageList">
+               <datalist id="languageList">
+                 
+                  <%
+                      for ( let item of data.brands ) {
+                  %>
+                      <option value='<%= item.brand %>'>
+                  <%
+                      }
+                  %>
+            </datalist>
+               <button type="submit">Search</button>
+               <a href="/">clear</a>
+             </form>
+         </div>
+
+      </div>
+    
+   </div>
+  
+    <div style="margin-left: 10%;">
+      <div><h4>List Of Products <small>(Total Products: <%= data.totalCount %>)</small></h4> </div>
+    <ul class="tree">
+      <%if ( data.categories.length == 0) { %>
+          <p>* No Data Found</p>
+         <% } %>
+      <% for(var i = 0; i < data.categories.length; i++) {%>
+        <li id="menu12">
+           <label for="menu12">
+           <a><%= data.categories[i] %></a>
+           </label>
+          
+           <ul>
+            <% for(var j = 0; j < data.brands.length; j++) {%>
+               <%if (data.brands[j].category == data.categories[i]) { %>
+                
+              <li id="menu13">
+                 <label for="menu13"><a><%= data.brands[j].brand %></a></label>&nbsp; &nbsp; <a title="Delete" class="delete-icon" style="color: red;" href="/delete?brand=<%= data.brands[j].brand %>" >&#x1F5D9;</a>
+                
+              </li>
+              <% } %>
+              <% } %>
+           </ul>
+        </li>
+        <% } %>
+
+     </ul>
+   </div>
+
+  
+</body>
+</html>
