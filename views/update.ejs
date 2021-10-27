@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+</head>
+<body>
+    <form action="/update" method="POST">
+        <label for="category">Choose a category:</label>
+
+        <select name="category" id="category">
+        <option value="<%= data.category%>" ><%= data.category%></option>
+          <option value="Mobile">Mobile</option>
+          <option value="Laptop">Laptop</option>
+          <option value="TV" >TV</option>
+          <option value="Clothing" >Clothing</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Personal Care">Personal Care</option>
+          <option value="Home Decor">Home Decor</option>
+          <option value="Shoes">Shoes</option>
+          <option value="Watches">Watches</option>
+
+
+
+        </select>
+        <input type="text" placeholder="Brand Name" value="<%= data.brand%>" name="brand">
+        <button type="submit">Update Product</button>
+      </form> 
+</body>
+</html>

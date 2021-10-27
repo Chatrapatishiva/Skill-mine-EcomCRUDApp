@@ -104,6 +104,11 @@ const searchProducts = (req, res, next) => {
     })
     .catch((error) => console.log(error));
 };
+
+const updateProductPage = (req, res, next) => {
+  console.log(req.query)
+  res.status(200).render("update.ejs", {data: req.query });
+}
 module.exports = {
   getProducts,
   createProduct,
@@ -111,4 +116,5 @@ module.exports = {
   updateProduct,
   deleteProduct,
   searchProducts,
+  updateProductPage
 };

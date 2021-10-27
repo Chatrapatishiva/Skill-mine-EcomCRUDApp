@@ -92,7 +92,7 @@
                <%if (data.brands[j].category == data.categories[i]) { %>
                 
               <li id="menu13">
-                 <label for="menu13"><a><%= data.brands[j].brand %></a></label>&nbsp; &nbsp; <a title="Delete" class="delete-icon" style="color: red;" href="/delete?brand=<%= data.brands[j].brand %>" >&#x1F5D9;</a>
+                 <label for="menu13"><a><%= data.brands[j].brand %></a></label>&nbsp; &nbsp;<a title="Edit" style="color: blue;" href="/updateProduct?brand=<%= data.brands[j].brand %>&category=<%= data.categories[i] %>">&#x270E;</a>&nbsp; &nbsp; <a title="Delete" class="delete-icon" style="color: red;" href="/delete?brand=<%= data.brands[j].brand %>">&#x1F5D9;</a>
                 
               </li>
               <% } %>

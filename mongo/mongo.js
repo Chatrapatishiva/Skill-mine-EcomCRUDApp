@@ -30,7 +30,7 @@ const readDataWithTotal = (obj, options) =>
 const updateProductData = (obj) =>
   productsCollection
     .findOneAndUpdate(
-      {brand: obj.brand},
+      {category: obj.category},
       {
         $set: {
           category: obj.category,
