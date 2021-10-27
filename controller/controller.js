@@ -51,7 +51,8 @@ const updateProduct = (req, res, next) => {
     .updateProductData(req.body)
     .then((response) => {
       console.log(response);
-      res.send({ message: response });
+      res.redirect("/");
+
     })
     .catch((error) => console.log(error));
 };
